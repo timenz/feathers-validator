@@ -147,8 +147,8 @@ function generateIntegerValidatorFunction() {
 function generateMinValidatorFunction(params) {
     return function (key, value) {
         try {
-            if (typeof value === 'number' || !isNaN(value) || value == undefined) {
-                if (value >= params[0]) return {valid: true};
+            if (typeof value === 'number' || value == undefined) {
+                if (value >= params[0] && !isNaN(value)) return {valid: true};
                 else return {
                     valid: false,
                     error: 'The size of the ' + key + ' field must be greater than or equal to ' + params[0] + '.'
@@ -171,8 +171,8 @@ function generateMinValidatorFunction(params) {
 function generateMaxValidatorFunction(params) {
     return function (key, value) {
         try {
-            if (typeof value === 'number' || !isNaN(value) || value == undefined) {
-                if (value <= params[0]) return {valid: true};
+            if (typeof value === 'number' || value == undefined) {
+                if (value <= params[0] && !isNaN(value)) return {valid: true};
                 else return {
                     valid: false,
                     error: 'The size of the ' + key + ' field must be less than or equal to ' + params[0] + '.'
